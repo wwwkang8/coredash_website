@@ -611,6 +611,180 @@
     .fade-in:nth-child(4) { transition-delay: 0.3s; }
     .fade-in:nth-child(5) { transition-delay: 0.4s; }
     .fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+    /* ─── AI TEAM ─── */
+    #team {
+      background: var(--cream);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 20px 100px;
+    }
+    .team-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,107,53,0.15);
+      pointer-events: none;
+      animation: dotDrift ease-in-out infinite;
+    }
+    @keyframes dotDrift {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-22px) scale(1.1); opacity: 0.3; }
+    }
+    .team-title-big {
+      font-size: clamp(38px, 7vw, 76px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--dark);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .team-subtitle {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+    .team-subtitle strong {
+      color: var(--orange);
+      font-style: italic;
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 1px;
+    }
+    .team-cards {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 14px;
+      margin-bottom: 52px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 80px 20px 24px;
+    }
+    .team-cards::-webkit-scrollbar { display: none; }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 0 16px 24px;
+      width: 155px;
+      min-width: 140px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: visible;
+      transition: box-shadow 0.3s;
+    }
+    /* Individual float animations per card */
+    .team-card:nth-child(1) { animation: float1 3.2s ease-in-out 0s infinite; }
+    .team-card:nth-child(2) { animation: float2 3.6s ease-in-out 0.4s infinite; }
+    .team-card:nth-child(3) { animation: float3 3.4s ease-in-out 0.2s infinite; }
+    .team-card:nth-child(4) { animation: float4 3.8s ease-in-out 0.6s infinite; }
+    .team-card:nth-child(5) { animation: float5 3.3s ease-in-out 0.1s infinite; }
+    .team-card:nth-child(6) { animation: float6 3.7s ease-in-out 0.8s infinite; }
+    @keyframes float1 { 0%,100%{transform:translateY(12px) rotate(-2deg)} 50%{transform:translateY(2px) rotate(-2deg)} }
+    @keyframes float2 { 0%,100%{transform:translateY(6px) rotate(1.5deg)} 50%{transform:translateY(-4px) rotate(1.5deg)} }
+    @keyframes float3 { 0%,100%{transform:translateY(2px) rotate(-1deg)} 50%{transform:translateY(-8px) rotate(-1deg)} }
+    @keyframes float4 { 0%,100%{transform:translateY(8px) rotate(1deg)} 50%{transform:translateY(-2px) rotate(1deg)} }
+    @keyframes float5 { 0%,100%{transform:translateY(14px) rotate(-1.5deg)} 50%{transform:translateY(4px) rotate(-1.5deg)} }
+    @keyframes float6 { 0%,100%{transform:translateY(16px) rotate(2deg)} 50%{transform:translateY(6px) rotate(2deg)} }
+
+    /* Featured card */
+    .team-card.featured {
+      border-color: rgba(255,107,53,0.35);
+      box-shadow: 0 16px 48px rgba(255,107,53,0.2), 0 4px 16px rgba(0,0,0,0.08);
+      z-index: 2;
+      animation: floatFeatured 3.5s ease-in-out 0.3s infinite;
+    }
+    @keyframes floatFeatured {
+      0%,100%{transform:translateY(-24px) scale(1.06) rotate(-0.5deg)}
+      50%{transform:translateY(-34px) scale(1.06) rotate(-0.5deg)}
+    }
+    .team-card:hover { animation-play-state: paused; }
+    .team-card:not(.featured):hover {
+      transform: translateY(-18px) rotate(0deg) scale(1.04) !important;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.14) !important;
+      z-index: 3;
+    }
+    .team-card.featured:hover {
+      transform: translateY(-40px) scale(1.09) rotate(0deg) !important;
+    }
+
+    /* Avatar */
+    .avatar-wrap {
+      position: relative;
+      width: 120px;
+      height: 130px;
+      margin: -48px auto 14px;
+    }
+    .avatar-bg {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: #FDE8DF;
+    }
+    .avatar-svg {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 108px;
+      pointer-events: none;
+    }
+    .card-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .card-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: none;
+      flex-shrink: 0;
+    }
+    .featured .card-dot { display: inline-block; }
+    .card-role {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .team-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .team-cta-btn:hover {
+      background: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(255,107,53,0.35);
+    }
+    @media (max-width: 768px) {
+      .team-cards { justify-content: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -619,6 +793,7 @@
   <nav id="navbar">
     <a href="#hero" class="nav-logo">Core<span>Dash</span></a>
     <ul class="nav-links">
+      <li><a href="#team">AI 팀원</a></li>
       <li><a href="#problem">고민</a></li>
       <li><a href="#services">서비스</a></li>
       <li><a href="#process">프로세스</a></li>
@@ -652,6 +827,200 @@
         <div class="num"><span>100</span>%</div>
         <div class="label">고객 맞춤 솔루션</div>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── AI TEAM ─── -->
+  <section id="team">
+    <!-- Floating background dots -->
+    <div class="team-dot" style="width:18px;height:18px;top:9%;left:9%;animation-duration:4s;animation-delay:0s;"></div>
+    <div class="team-dot" style="width:10px;height:10px;top:14%;right:11%;animation-duration:3.5s;animation-delay:0.5s;"></div>
+    <div class="team-dot" style="width:22px;height:22px;bottom:12%;right:16%;animation-duration:5s;animation-delay:0.9s;"></div>
+    <div class="team-dot" style="width:8px;height:8px;top:55%;right:7%;animation-duration:4.5s;animation-delay:0.3s;"></div>
+    <div class="team-dot" style="width:14px;height:14px;bottom:22%;left:14%;animation-duration:3.8s;animation-delay:1.2s;"></div>
+    <div class="team-dot" style="width:10px;height:10px;top:38%;left:4%;animation-duration:4.2s;animation-delay:0.7s;"></div>
+
+    <div class="section-inner">
+      <h2 class="team-title-big">AI AGENT TEAM</h2>
+      <p class="team-subtitle">CoreDash의 <strong>AI 팀원</strong>을 만나보세요</p>
+
+      <div class="team-cards">
+
+        <!-- Ara: AI 기획 책임자 -->
+        <div class="team-card">
+          <div class="avatar-wrap">
+            <div class="avatar-bg"></div>
+            <svg class="avatar-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 160 Q10 128 38 120 Q60 114 82 120 Q110 128 110 160Z" fill="#7BB5E8"/>
+              <rect x="50" y="112" width="20" height="22" rx="8" fill="#F5C5A3"/>
+              <ellipse cx="60" cy="72" rx="38" ry="45" fill="#2C1810"/>
+              <ellipse cx="60" cy="82" rx="32" ry="37" fill="#F5C5A3"/>
+              <path d="M22 72 Q60 18 98 72 Q98 58 60 52 Q22 58 22 72Z" fill="#2C1810"/>
+              <rect x="22" y="66" width="12" height="42" rx="6" fill="#2C1810"/>
+              <rect x="86" y="66" width="12" height="42" rx="6" fill="#2C1810"/>
+              <path d="M44 68 Q50 64 56 67" stroke="#2C1810" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M64 67 Q70 64 76 68" stroke="#2C1810" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="50" cy="76" rx="5" ry="6" fill="#2D2D2D"/>
+              <ellipse cx="70" cy="76" rx="5" ry="6" fill="#2D2D2D"/>
+              <circle cx="52.5" cy="74" r="1.8" fill="white"/>
+              <circle cx="72.5" cy="74" r="1.8" fill="white"/>
+              <path d="M60 86 Q57 92 60 94 Q63 92 60 86" stroke="#D4956A" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M52 103 Q60 110 68 103" stroke="#C8816A" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="43" cy="90" rx="8" ry="5" fill="#F9A8A8" opacity="0.4"/>
+              <ellipse cx="77" cy="90" rx="8" ry="5" fill="#F9A8A8" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card-name">Ara <span class="card-dot"></span></div>
+          <div class="card-role">AI 기획 책임자</div>
+          <div class="card-desc">요구사항 분석 맡겠습니다!</div>
+        </div>
+
+        <!-- Neo: AI 백엔드 엔지니어 (FEATURED) -->
+        <div class="team-card featured">
+          <div class="avatar-wrap">
+            <div class="avatar-bg"></div>
+            <svg class="avatar-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 160 Q10 128 38 120 Q60 114 82 120 Q110 128 110 160Z" fill="#2D3E8C"/>
+              <rect x="50" y="112" width="20" height="22" rx="8" fill="#F5C5A3"/>
+              <path d="M22 75 Q60 16 98 75 Q98 58 60 50 Q22 58 22 75Z" fill="#1A1A1A"/>
+              <ellipse cx="60" cy="83" rx="32" ry="37" fill="#F5C5A3"/>
+              <path d="M42 68 Q49 64 56 67" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M64 67 Q71 64 78 68" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+              <rect x="39" y="70" width="19" height="14" rx="5" fill="none" stroke="#555" stroke-width="2.5"/>
+              <rect x="62" y="70" width="19" height="14" rx="5" fill="none" stroke="#555" stroke-width="2.5"/>
+              <line x1="58" y1="77" x2="62" y2="77" stroke="#555" stroke-width="2.5"/>
+              <line x1="20" y1="75" x2="39" y2="75" stroke="#555" stroke-width="2"/>
+              <line x1="81" y1="75" x2="100" y2="75" stroke="#555" stroke-width="2"/>
+              <ellipse cx="49" cy="77" rx="4" ry="4.5" fill="#2D2D2D"/>
+              <ellipse cx="71" cy="77" rx="4" ry="4.5" fill="#2D2D2D"/>
+              <circle cx="51" cy="75" r="1.5" fill="white"/>
+              <circle cx="73" cy="75" r="1.5" fill="white"/>
+              <path d="M60 88 Q57 94 60 96 Q63 94 60 88" stroke="#D4956A" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M51 106 Q60 114 69 106" stroke="#C8816A" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="43" cy="93" rx="8" ry="5" fill="#F9A8A8" opacity="0.3"/>
+              <ellipse cx="77" cy="93" rx="8" ry="5" fill="#F9A8A8" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="card-name">Neo <span class="card-dot"></span></div>
+          <div class="card-role">AI 백엔드 엔지니어</div>
+          <div class="card-desc">서버 개발 맡겠습니다!</div>
+        </div>
+
+        <!-- Luna: AI 프론트엔드 개발자 -->
+        <div class="team-card">
+          <div class="avatar-wrap">
+            <div class="avatar-bg"></div>
+            <svg class="avatar-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 160 Q8 124 34 116 Q60 110 86 116 Q112 124 112 160Z" fill="#FF8A7A"/>
+              <rect x="50" y="110" width="20" height="20" rx="8" fill="#F5C5A3"/>
+              <path d="M20 68 Q12 96 14 138 L106 138 Q108 96 100 68 Q60 16 20 68Z" fill="#8B3A0F"/>
+              <ellipse cx="60" cy="78" rx="32" ry="37" fill="#F5C5A3"/>
+              <path d="M20 68 Q60 16 100 68 Q100 54 60 48 Q20 54 20 68Z" fill="#8B3A0F"/>
+              <path d="M43 65 Q50 61 57 64" stroke="#8B3A0F" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M63 64 Q70 61 77 65" stroke="#8B3A0F" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="50" cy="73" rx="5" ry="6" fill="#2D2D2D"/>
+              <ellipse cx="70" cy="73" rx="5" ry="6" fill="#2D2D2D"/>
+              <circle cx="52.5" cy="71" r="1.8" fill="white"/>
+              <circle cx="72.5" cy="71" r="1.8" fill="white"/>
+              <path d="M60 83 Q57 89 60 91 Q63 89 60 83" stroke="#D4956A" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M52 101 Q60 108 68 101" stroke="#C8816A" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="43" cy="87" rx="8" ry="5" fill="#F9A8A8" opacity="0.45"/>
+              <ellipse cx="77" cy="87" rx="8" ry="5" fill="#F9A8A8" opacity="0.45"/>
+            </svg>
+          </div>
+          <div class="card-name">Luna <span class="card-dot"></span></div>
+          <div class="card-role">AI 프론트엔드 개발자</div>
+          <div class="card-desc">UI 구현 도와드릴게요!</div>
+        </div>
+
+        <!-- Kai: AI QA 엔지니어 -->
+        <div class="team-card">
+          <div class="avatar-wrap">
+            <div class="avatar-bg" style="background:#FDEBD5;"></div>
+            <svg class="avatar-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 160 Q10 128 38 120 Q60 114 82 120 Q110 128 110 160Z" fill="#5BAD8F"/>
+              <rect x="50" y="112" width="20" height="22" rx="8" fill="#D4A47A"/>
+              <ellipse cx="60" cy="52" rx="40" ry="36" fill="#1A0A00"/>
+              <ellipse cx="30" cy="44" rx="12" ry="10" fill="#1A0A00"/>
+              <ellipse cx="90" cy="44" rx="12" ry="10" fill="#1A0A00"/>
+              <ellipse cx="60" cy="20" rx="14" ry="12" fill="#1A0A00"/>
+              <ellipse cx="42" cy="26" rx="11" ry="9" fill="#1A0A00"/>
+              <ellipse cx="78" cy="26" rx="11" ry="9" fill="#1A0A00"/>
+              <ellipse cx="60" cy="86" rx="32" ry="37" fill="#D4A47A"/>
+              <path d="M43 72 Q50 68 57 71" stroke="#1A0A00" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M63 71 Q70 68 77 72" stroke="#1A0A00" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="50" cy="79" rx="5" ry="6" fill="#1A0A00"/>
+              <ellipse cx="70" cy="79" rx="5" ry="6" fill="#1A0A00"/>
+              <circle cx="52.5" cy="77" r="1.8" fill="white"/>
+              <circle cx="72.5" cy="77" r="1.8" fill="white"/>
+              <path d="M60 90 Q56 96 60 98 Q64 96 60 90" stroke="#A0724A" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M51 108 Q60 116 69 108" stroke="#8B5A38" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="43" cy="95" rx="7" ry="4.5" fill="#C87A5A" opacity="0.3"/>
+              <ellipse cx="77" cy="95" rx="7" ry="4.5" fill="#C87A5A" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="card-name">Kai <span class="card-dot"></span></div>
+          <div class="card-role">AI QA 엔지니어</div>
+          <div class="card-desc">품질 검증 맡겠습니다!</div>
+        </div>
+
+        <!-- Max: AI DevOps 엔지니어 -->
+        <div class="team-card">
+          <div class="avatar-wrap">
+            <div class="avatar-bg"></div>
+            <svg class="avatar-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 160 Q10 128 38 120 Q60 114 82 120 Q110 128 110 160Z" fill="#4A4A4A"/>
+              <rect x="50" y="112" width="20" height="22" rx="8" fill="#F5C5A3"/>
+              <path d="M22 75 Q60 15 98 75 Q98 58 60 50 Q22 58 22 75Z" fill="#1A1A1A"/>
+              <ellipse cx="60" cy="83" rx="32" ry="37" fill="#F5C5A3"/>
+              <path d="M28 100 Q28 122 60 128 Q92 122 92 100 Q80 108 60 110 Q40 108 28 100Z" fill="#1A1A1A" opacity="0.85"/>
+              <path d="M48 99 Q54 95 60 97 Q66 95 72 99" fill="#1A1A1A" opacity="0.85"/>
+              <path d="M40 67 Q49 62 58 66" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+              <path d="M62 66 Q71 62 80 67" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+              <ellipse cx="50" cy="76" rx="5" ry="6" fill="#2D2D2D"/>
+              <ellipse cx="70" cy="76" rx="5" ry="6" fill="#2D2D2D"/>
+              <circle cx="52.5" cy="74" r="1.8" fill="white"/>
+              <circle cx="72.5" cy="74" r="1.8" fill="white"/>
+              <path d="M60 84 Q57 90 60 92 Q63 90 60 84" stroke="#D4956A" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-name">Max <span class="card-dot"></span></div>
+          <div class="card-role">AI DevOps 엔지니어</div>
+          <div class="card-desc">배포·운영 맡겠습니다!</div>
+        </div>
+
+        <!-- Zoe: AI 자동화 전문가 -->
+        <div class="team-card">
+          <div class="avatar-wrap">
+            <div class="avatar-bg"></div>
+            <svg class="avatar-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 160 Q10 128 38 120 Q60 114 82 120 Q110 128 110 160Z" fill="#9B7FD4"/>
+              <rect x="50" y="112" width="20" height="22" rx="8" fill="#F5C5A3"/>
+              <path d="M88 56 Q115 42 112 74 Q109 96 96 108" stroke="#C45C1E" stroke-width="16" stroke-linecap="round" fill="none"/>
+              <path d="M22 70 Q60 16 98 70 Q98 56 60 48 Q22 56 22 70Z" fill="#C45C1E"/>
+              <path d="M22 70 Q17 88 20 112" stroke="#C45C1E" stroke-width="14" stroke-linecap="round" fill="none"/>
+              <ellipse cx="60" cy="80" rx="32" ry="37" fill="#F5C5A3"/>
+              <path d="M22 70 Q60 22 98 70 Q90 64 60 58 Q30 64 22 70Z" fill="#C45C1E" opacity="0.9"/>
+              <path d="M44 66 Q51 62 58 65" stroke="#C45C1E" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M62 65 Q69 62 76 66" stroke="#C45C1E" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="50" cy="74" rx="5" ry="6" fill="#2D2D2D"/>
+              <ellipse cx="70" cy="74" rx="5" ry="6" fill="#2D2D2D"/>
+              <circle cx="52.5" cy="72" r="1.8" fill="white"/>
+              <circle cx="72.5" cy="72" r="1.8" fill="white"/>
+              <path d="M60 84 Q57 90 60 92 Q63 90 60 84" stroke="#D4956A" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M52 102 Q60 110 68 102" stroke="#C8816A" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="43" cy="90" rx="8" ry="5" fill="#F9A8A8" opacity="0.45"/>
+              <ellipse cx="77" cy="90" rx="8" ry="5" fill="#F9A8A8" opacity="0.45"/>
+            </svg>
+          </div>
+          <div class="card-name">Zoe <span class="card-dot"></span></div>
+          <div class="card-role">AI 자동화 전문가</div>
+          <div class="card-desc">자동화는 제가 맡겠습니다!</div>
+        </div>
+
+      </div><!-- /team-cards -->
+
+      <a href="#contact" class="team-cta-btn">AI 팀원과 함께하기 →</a>
     </div>
   </section>
 
@@ -970,7 +1339,8 @@
       <a href="#faq">FAQ</a>
       <a href="#contact">상담 신청</a>
     </div>
-    <p style="margin-top: 32px; font-size: 12px; opacity: 0.4;">© 2026 CoreDash. All rights reserved.</p>
+    <p style="margin-top: 24px; font-size: 13px; opacity: 0.5;">대표자: 강정호 &nbsp;|&nbsp; 사업자등록번호: 251-36-01606</p>
+    <p style="margin-top: 8px; font-size: 12px; opacity: 0.4;">© 2026 CoreDash. All rights reserved.</p>
   </footer>
 
   <script>
